@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 @login_required
 def create(request):
     if request.method == 'POST':
-        data = ReviewForm(request.POST)
+        data = ReviewForm(request.POST, request.FILES)
         if data.is_valid():
             db_data = data.save(commit=False)
             db_data.user = request.user

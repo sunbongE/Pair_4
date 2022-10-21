@@ -4,17 +4,16 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% block content %}
-{% if request.resolver_match.url_name == 'create' %}
+  {% if request.resolver_match.url_name == 'create' %}
     <h1>생성</h1>
-{% else %}
+  {% else %}
     <h1>수정</h1>
-{% endif %}
+  {% endif %}
 
-<form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% bootstrap_form data %}
-
-    {% bootstrap_button button_type="submit" content="OK" %}
-</form>
+    <input class='btn btn-primary' value='생성' type="submit" name="" id="">
+  </form>
 {% endblock %}
