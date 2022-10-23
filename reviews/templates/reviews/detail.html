@@ -27,24 +27,22 @@
 </div>
 
 {% comment %} 댓글 {% endcomment %}
-{% if request.user.is_authenticated %} 
+<h4 class="my-5">댓글 <hr></h4>
 
-<h4 class="mt-5">댓글</h4>
 {% if comments %}
-<p >{{ comments.count }}개 </p>
+<p class='text-muted float-end'>댓글 {{ comments.count }}개 </p>
 {% endif %}
 
 {% if request.user.is_authenticated %}
 <form action="{% url 'reviews:comment_create' review.pk %}"  method='POST'>
     {% csrf_token %}
     <textarea class="form-control" name="content" rows="5"></textarea>
-    <div class='input-group '>
+    <div class=' '>
         <input class='btn btn-primary' type="submit" value='작성'>
     </div>
 
 </form>
 <br>
-{% endif %}
 {% endif %}
 {% for comment in comments %}
 {% if request.user == comment.user %}
